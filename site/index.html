@@ -197,7 +197,7 @@
     
     
 </head>
-    <body class="page basicpage" id="page-6332cc93f5" data-cmp-link-accessibility-enabled data-cmp-link-accessibility-text="opens in a new tab" data-cmp-data-layer-enabled data-cmp-data-layer-name="adobeDataLayer"><div style="background:#fff3cd;color:#664d03;padding:8px 16px;font:14px/1.4 sans-serif;text-align:center;border-bottom:1px solid #ffe69c">This is a backup copy of the MOHH website (last updated 12 Nov 2026 23:43 SGT). Some features such as forms and search are temporarily unavailable.</div>
+    <body class="page basicpage" id="page-6332cc93f5" data-cmp-link-accessibility-enabled data-cmp-link-accessibility-text="opens in a new tab" data-cmp-data-layer-enabled data-cmp-data-layer-name="adobeDataLayer"><div style="background:#fff3cd;color:#664d03;padding:8px 16px;font:14px/1.4 sans-serif;text-align:center;border-bottom:1px solid #ffe69c">This is a backup copy of the MOHH website (last updated 12 Nov 2026 23:57 SGT). Some features such as forms and search are temporarily unavailable.</div>
         <script>
           var dataLayerName = 'adobeDataLayer' || 'adobeDataLayer';
           window[dataLayerName] = window[dataLayerName] || [];
@@ -1542,79 +1542,6 @@ that make Singapore&#39;s healthcare happen</div>
 <script defer src="etc.clientlibs/clientlibs/granite/jquery.lc-7842899024219bcbdb5e72c946870b79-lc.min.js"></script>
 <script defer src="etc.clientlibs/clientlibs/granite/utils.lc-e7bf340a353e643d198b25d0c8ccce47-lc.min.js"></script>
 
-<script>
-    (function() {
-        var navigation = document.querySelector('[data-cmp-is="mega-navigation"]');
-        var aboutUrl = 'https://www.mohh.com.sg/who-we-are/about-us';
-
-        if (!navigation || !window.MutationObserver) {
-            return;
-        }
-
-        function appendAboutLink(menu, itemClass, linkClass) {
-            if (!menu || menu.querySelector('a[href="' + aboutUrl + '"]')) {
-                return;
-            }
-
-            var item = document.createElement('div');
-            item.className = itemClass;
-
-            var link = document.createElement('a');
-            link.className = linkClass;
-            link.href = aboutUrl;
-            link.textContent = 'About MOH Holdings | MOHH';
-            item.appendChild(link);
-            menu.appendChild(item);
-        }
-
-        function showFallback() {
-            navigation.innerHTML = '';
-
-            var bar = document.createElement('div');
-            bar.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 32px;min-height:92px;box-sizing:border-box;flex-wrap:wrap';
-
-            var logo = document.createElement('a');
-            logo.href = 'index.html';
-            logo.setAttribute('aria-label', 'MOHH Home');
-
-            var image = document.createElement('img');
-            image.src = 'content/dam/mohhwebsites/sample-images/Logo.jpg';
-            image.alt = 'MOHH Logo';
-            image.style.cssText = 'display:block;height:60px;width:auto;max-width:240px';
-            logo.appendChild(image);
-
-            var about = document.createElement('a');
-            about.href = aboutUrl;
-            about.textContent = 'About MOH Holdings | MOHH';
-            about.style.cssText = 'color:var(--theme-text-primary);font-size:16px;font-weight:700;text-decoration:none;padding:8px 12px';
-
-            bar.appendChild(logo);
-            bar.appendChild(about);
-            navigation.appendChild(bar);
-        }
-
-        var observer = new MutationObserver(function() {
-            var menu = navigation.querySelector('[data-cmp-hook-mega-navigation="menuContainer"]');
-            if (!menu) {
-                showFallback();
-                observer.disconnect();
-                return;
-            }
-
-            if (menu.querySelector('.cmp-mega-navigation__menu-item')) {
-                appendAboutLink(menu, 'cmp-mega-navigation__menu-item', 'cmp-mega-navigation__menu-link');
-                appendAboutLink(
-                    navigation.querySelector('[data-cmp-hook-mega-navigation="mobileMenu"]'),
-                    'cmp-mega-navigation__mobile-menu-item',
-                    'cmp-mega-navigation__mobile-menu-link'
-                );
-                observer.disconnect();
-            }
-        });
-
-        observer.observe(navigation, { childList: true, subtree: true });
-    })();
-</script>
 
 
 
@@ -1626,5 +1553,5 @@ that make Singapore&#39;s healthcare happen</div>
     
 
         
-    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a596a65f6ff6f370',t:'MTc5NDQ5ODE4MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a596a65f6ff6f370',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a596bbd40a6d469e',t:'MTc5NDQ5OTA1OQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a596bbd40a6d469e',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
