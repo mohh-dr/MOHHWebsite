@@ -98,7 +98,7 @@
 <!-- GTM configured - load container -->
 
     <!-- GTM mappings data (safely escaped via data attribute) -->
-    <div id="gtm-mappings-data" style="display:none;" data-gtm-mappings="[{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.nmrc.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-N7BQX3ZX&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/mmi&#34;,&#34;gtmId&#34;:&#34;GTM-MDB6J5BM&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.1fss.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-NZH2NCKW&#34;},{&#34;domain&#34;:&#34;www.hhom.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-M7DHCPBD&#34;},{&#34;domain&#34;:&#34;localhost&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-MPJRGMDP&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WNGZNT2K&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.vanguardhealthcare.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-TR7X6NR7&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.healthcarescholarships.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-PTRBTC3Q&#34;}]"></div>
+    <div id="gtm-mappings-data" style="display:none;" data-gtm-mappings="[{&#34;domain&#34;:&#34;www.healthcarescholarships.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-PTRBTC3Q&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WNGZNT2K&#34;},{&#34;domain&#34;:&#34;www.nmrc.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-N7BQX3ZX&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.vanguardhealthcare.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-TR7X6NR7&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/mmi&#34;,&#34;gtmId&#34;:&#34;GTM-MDB6J5BM&#34;},{&#34;domain&#34;:&#34;www.1fss.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-NZH2NCKW&#34;},{&#34;domain&#34;:&#34;www.hhom.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-M7DHCPBD&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;localhost&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-MPJRGMDP&#34;}]"></div>
     <script>
     (function() {
         'use strict';
@@ -220,17 +220,14 @@
     }
     function getPageUrl(path, assetPath) {
         var parsed = new URL(path, sourceOrigin);
-        var normalizedPath = parsed.pathname.replace(/\.html$/i, '').replace(/\/$/, '') || '/';
+        var normalizedPath = parsed.pathname.replace(/(?:\.html)+$/i, '').replace(/\/$/, '') || '/';
+        if (normalizedPath === '/home' || normalizedPath === '/index') {
+            normalizedPath = '/';
+        }
         if (mirroredPages.indexOf(normalizedPath) === -1) {
             return sourceOrigin + path;
         }
-        var localPath = parsed.pathname;
-        if (localPath === '/') {
-            localPath = '/index.html';
-        } else if (!/\.html$/i.test(localPath)) {
-            localPath += '.html';
-        }
-        return assetPath + localPath + parsed.search + parsed.hash;
+        return assetPath + normalizedPath + parsed.search + parsed.hash;
     }
     window.fetch = function(input, init) {
         var requestUrl = typeof input === 'string' ? input : input && input.url;
@@ -1202,5 +1199,5 @@
     
 
         
-    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59725e80bf8e5f9',t:'MTc5NDUwMzQwNA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59725e80bf8e5f9',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59740cd9c30a1cf',t:'MTc5NDUwNDUwNg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59740cd9c30a1cf',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
