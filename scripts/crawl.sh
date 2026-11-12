@@ -315,7 +315,7 @@ touch "$STAGE/out/.nojekyll"
 mkdir -p "$ROOT/site"
 cp -a "$STAGE/out/." "$ROOT/site/"
 
-# Remove the legacy notice from pages already present in the merged mirror.
+# Normalize links and remove the legacy notice from all mirrored pages.
 find "$ROOT/site" -name '*.html' -print0 | while IFS= read -r -d '' f; do
   python3 - "$f" "$ROOT/site" "$STAGE/urls.txt" "$ORIGIN" <<'PY' || { echo "Failed to normalize mirrored page links: $f" >&2; exit 1; }
 import html, os, posixpath, re, sys
@@ -371,6 +371,11 @@ updated = re.sub(
     "",
     updated,
 )
+updated = re.sub(r'<meta\b(?=[^>]*\bname\s*=\s*["\']?robots["\']?)[^>]*>', "", updated, flags=re.I)
+head_close = re.search(r"</head\s*>", updated, re.I)
+if not head_close:
+    raise SystemExit("Mirrored HTML page is missing its closing </head>: " + path)
+updated = updated[:head_close.start()] + '<meta name="robots" content="noindex">\n' + updated[head_close.start():]
 if updated != source:
     with open(path, "w", encoding="utf-8") as f:
         f.write(updated)
