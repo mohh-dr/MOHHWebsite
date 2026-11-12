@@ -1,0 +1,30 @@
+name: weekly-dr-sync
+on:
+  schedule:
+    - cron: '0 18 * * 0'   # Monday 02:00 Singapore time (cron is UTC)
+  workflow_dispatch: {}     # "Run workflow" button for manual sync
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency: { group: pages, cancel-in-progress: false }
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: '${{ steps.deploy.outputs.page_url }}' }
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror live site
+        run: bash scripts/crawl.sh
+      - name: Commit snapshot
+        run: |
+          git config user.name  'dr-sync-bot'
+          git config user.email 'dr-sync-bot@users.noreply.github.com'
+          git add -A site
+          git diff --cached --quiet || git commit -m "Weekly DR sync $(date -u +%F)"
+          git push
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: site }
+      - id: deploy
+        uses: actions/deploy-pages@v4
