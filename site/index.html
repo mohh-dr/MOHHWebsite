@@ -98,7 +98,7 @@
 <!-- GTM configured - load container -->
 
     <!-- GTM mappings data (safely escaped via data attribute) -->
-    <div id="gtm-mappings-data" style="display:none;" data-gtm-mappings="[{&#34;domain&#34;:&#34;www.1fss.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-NZH2NCKW&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WNGZNT2K&#34;},{&#34;domain&#34;:&#34;www.nmrc.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-N7BQX3ZX&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/mmi&#34;,&#34;gtmId&#34;:&#34;GTM-MDB6J5BM&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.hhom.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-M7DHCPBD&#34;},{&#34;domain&#34;:&#34;www.healthcarescholarships.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-PTRBTC3Q&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;localhost&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-MPJRGMDP&#34;},{&#34;domain&#34;:&#34;www.vanguardhealthcare.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-TR7X6NR7&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;}]"></div>
+    <div id="gtm-mappings-data" style="display:none;" data-gtm-mappings="[{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.nmrc.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-N7BQX3ZX&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/mmi&#34;,&#34;gtmId&#34;:&#34;GTM-MDB6J5BM&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.1fss.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-NZH2NCKW&#34;},{&#34;domain&#34;:&#34;www.hhom.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-M7DHCPBD&#34;},{&#34;domain&#34;:&#34;localhost&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-MPJRGMDP&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WNGZNT2K&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.vanguardhealthcare.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-TR7X6NR7&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.healthcarescholarships.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-PTRBTC3Q&#34;}]"></div>
     <script>
     (function() {
         'use strict';
@@ -200,22 +200,71 @@
     <body class="page basicpage" id="page-6332cc93f5" data-cmp-link-accessibility-enabled data-cmp-link-accessibility-text="opens in a new tab" data-cmp-data-layer-enabled data-cmp-data-layer-name="adobeDataLayer"><script>
 (function() {
     var nativeFetch = window.fetch;
+    var sourceOrigin = "https://www.mohh.com.sg";
+    var mirroredPages = ["/", "/careers/life-at-mohh", "/media-centre", "/what-we-do/advancing-healthcare-innovation", "/what-we-do/building-healthcare-infrastructure", "/what-we-do/commitment-to-sustainability", "/what-we-do/developing-healthcare-talent", "/what-we-do/facilitating-healthcare-mediation", "/what-we-do/shaping-value-based-healthcare", "/who-we-are/about-us", "/who-we-are/our-entities", "/who-we-are/our-leadership", "/who-we-are/our-organisation", "/who-we-are/our-purpose-and-role", "/who-we-are/procurement"];
+    function findSitePath() {
+        var scripts = document.getElementsByTagName('script');
+        for (var i = 0; i < scripts.length; i++) {
+            var src = new URL(scripts[i].src, window.location.href).pathname;
+            var marker = '/etc.clientlibs/';
+            var markerIndex = src.indexOf(marker);
+            if (markerIndex !== -1 && src.indexOf('/clientlib-site.') !== -1) {
+                return src.slice(0, markerIndex);
+            }
+        }
+        if (window.location.hostname.endsWith('github.io')) {
+            return null;
+        }
+        return '';
+    }
+    function getPageUrl(path, assetPath) {
+        var parsed = new URL(path, sourceOrigin);
+        var normalizedPath = parsed.pathname.replace(/\.html$/i, '').replace(/\/$/, '') || '/';
+        if (mirroredPages.indexOf(normalizedPath) === -1) {
+            return sourceOrigin + path;
+        }
+        var localPath = parsed.pathname;
+        if (localPath === '/') {
+            localPath = '/index.html';
+        } else if (!/\.html$/i.test(localPath)) {
+            localPath += '.html';
+        }
+        return assetPath + localPath + parsed.search + parsed.hash;
+    }
     window.fetch = function(input, init) {
         var requestUrl = typeof input === 'string' ? input : input && input.url;
-        if (requestUrl && /\.sitetree\.json(?:[?#]|$)/i.test(requestUrl)) {
-            var scripts = document.getElementsByTagName('script');
-            var assetPath = '';
-            for (var i = 0; i < scripts.length; i++) {
-                var src = new URL(scripts[i].src, window.location.href).pathname;
-                var marker = '/etc.clientlibs/';
-                var markerIndex = src.indexOf(marker);
-                if (markerIndex !== -1 && src.indexOf('/clientlib-site.') !== -1) {
-                    assetPath = src.slice(0, markerIndex);
-                    break;
-                }
-            }
-            if (!assetPath && window.location.hostname.endsWith('github.io')) {
+        var isSiteTree = requestUrl && /\.sitetree\.json(?:[?#]|$)/i.test(requestUrl);
+        var isMediaSearch = requestUrl && /\/bin\/mohhwebsites\/media-search(?:[?#]|$)/i.test(requestUrl);
+        if (isSiteTree || isMediaSearch) {
+            var assetPath = findSitePath();
+            if (assetPath === null) {
                 return Promise.reject(new Error('Could not resolve the local MOHH site path'));
+            }
+            if (isMediaSearch) {
+                return nativeFetch.call(window, assetPath + '/media-search.json', init).then(function(response) {
+                    if (!response.ok) {
+                        return response;
+                    }
+                    return response.json().then(function(data) {
+                        (data.articles || []).forEach(function(article) {
+                            ['featuredImage', 'pdfUrl'].forEach(function(key) {
+                                if (typeof article[key] === 'string' && article[key].charAt(0) === '/' &&
+                                    article[key].slice(0, 2) !== '//') {
+                                    article[key] = assetPath + article[key];
+                                }
+                            });
+                            if (typeof article.ctaPath === 'string' && article.ctaPath.charAt(0) === '/' &&
+                                article.ctaPath.slice(0, 2) !== '//') {
+                                article.ctaPath = sourceOrigin + article.ctaPath;
+                            }
+                        });
+                        return new Response(JSON.stringify(data), {
+                            status: response.status,
+                            statusText: response.statusText,
+                            headers: { 'Content-Type': 'application/json' }
+                        });
+                    });
+                });
             }
             var search = new URL(requestUrl, window.location.href).search;
             return nativeFetch.call(window, assetPath + '/home.sitetree.json' + search, init).then(function(response) {
@@ -235,7 +284,7 @@
                             if ((key === 'path' || key === 'currentPagePath') &&
                                 typeof node[key] === 'string' && node[key].charAt(0) === '/' &&
                                 node[key].slice(0, 2) !== '//') {
-                                node[key] = assetPath + node[key];
+                                node[key] = getPageUrl(node[key], assetPath);
                             } else {
                                 addSitePath(node[key]);
                             }
@@ -1609,5 +1658,5 @@ that make Singapore&#39;s healthcare happen</div>
     
 
         
-    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a596f7e83aafe93c',t:'MTc5NDUwMTUyMA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a596f7e83aafe93c',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5972549acede5f9',t:'MTc5NDUwMzM3OQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5972549acede5f9',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
