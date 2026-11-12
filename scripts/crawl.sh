@@ -214,17 +214,14 @@ navigation_shim = r'''<script>
     }
     function getPageUrl(path, assetPath) {
         var parsed = new URL(path, sourceOrigin);
-        var normalizedPath = parsed.pathname.replace(/\.html$/i, '').replace(/\/$/, '') || '/';
+        var normalizedPath = parsed.pathname.replace(/(?:\.html)+$/i, '').replace(/\/$/, '') || '/';
+        if (normalizedPath === '/home' || normalizedPath === '/index') {
+            normalizedPath = '/';
+        }
         if (mirroredPages.indexOf(normalizedPath) === -1) {
             return sourceOrigin + path;
         }
-        var localPath = parsed.pathname;
-        if (localPath === '/') {
-            localPath = '/index.html';
-        } else if (!/\.html$/i.test(localPath)) {
-            localPath += '.html';
-        }
-        return assetPath + localPath + parsed.search + parsed.hash;
+        return assetPath + normalizedPath + parsed.search + parsed.hash;
     }
     window.fetch = function(input, init) {
         var requestUrl = typeof input === 'string' ? input : input && input.url;
@@ -320,16 +317,59 @@ cp -a "$STAGE/out/." "$ROOT/site/"
 
 # Remove the legacy notice from pages already present in the merged mirror.
 find "$ROOT/site" -name '*.html' -print0 | while IFS= read -r -d '' f; do
-  python3 - "$f" <<'PY' || { echo "Failed to clean legacy backup notice: $f" >&2; exit 1; }
-import re, sys
+  python3 - "$f" "$ROOT/site" "$STAGE/urls.txt" "$ORIGIN" <<'PY' || { echo "Failed to normalize mirrored page links: $f" >&2; exit 1; }
+import html, os, posixpath, re, sys
+from urllib.parse import urljoin, urlsplit, urlunsplit
 
-path = sys.argv[1]
+path, site_root, url_list, origin = sys.argv[1:]
 with open(path, encoding="utf-8", errors="ignore") as f:
     source = f.read()
+origin_parts = urlsplit(origin)
+mirrored_paths = set()
+for url in open(url_list, encoding="utf-8"):
+    route = urlsplit(url.strip()).path or "/"
+    route = route.rstrip("/") or "/"
+    while route.lower().endswith(".html"):
+        route = route[:-5]
+    if route in ("/home", "/index"):
+        route = "/"
+    mirrored_paths.add(route)
+
+relative_path = os.path.relpath(path, site_root).replace(os.sep, "/")
+current_path = "/" if relative_path == "index.html" else "/" + relative_path
+current_dir = posixpath.dirname(relative_path) or "."
+
+def rewrite_link(match):
+    value = html.unescape(match.group(2))
+    if not value or value.startswith("#"):
+        return match.group(0)
+    target = urlsplit(urljoin(origin.rstrip("/") + current_path, value))
+    if target.scheme not in ("http", "https") or target.netloc.lower() != origin_parts.netloc.lower():
+        return match.group(0)
+
+    route = target.path.rstrip("/") or "/"
+    had_html_extension = bool(re.search(r"(?:\.html)+$", route, re.I))
+    while route.lower().endswith(".html"):
+        route = route[:-5]
+    if route in ("/home", "/index"):
+        route = "/"
+
+    if route in mirrored_paths:
+        relative_target = posixpath.relpath(route.lstrip("/") or ".", current_dir)
+        if relative_target == ".":
+            relative_target = "./"
+        rewritten = relative_target + (("?" + target.query) if target.query else "") + (("#" + target.fragment) if target.fragment else "")
+    elif had_html_extension or not posixpath.splitext(target.path)[1]:
+        rewritten = urlunsplit((origin_parts.scheme, origin_parts.netloc, route, target.query, target.fragment))
+    else:
+        return match.group(0)
+    return match.group(1) + html.escape(rewritten, quote=True) + match.group(3)
+
+updated = re.sub(r"""(\bhref\s*=\s*["'])([^"']*)(["'])""", rewrite_link, source, flags=re.I)
 updated = re.sub(
     r'<div style="background:#fff3cd;color:#664d03;padding:8px 16px;font:14px/1\.4 sans-serif;text-align:center;border-bottom:1px solid #ffe69c">This is a backup copy of the MOHH website \(last updated [^<]*?\)\. Some features such as forms and search are temporarily unavailable\.</div>',
     "",
-    source,
+    updated,
 )
 if updated != source:
     with open(path, "w", encoding="utf-8") as f:
