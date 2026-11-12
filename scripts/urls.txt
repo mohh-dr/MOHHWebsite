@@ -1,2 +1,18 @@
 # One URL per line. Replace/extend with the ~20 pages to mirror.
 https://www.mohh.com.sg/
+https://www.mohh.com.sg/who-we-are/about-us
+https://www.mohh.com.sg/who-we-are/our-leadership
+https://www.mohh.com.sg/who-we-are/our-organisation
+https://www.mohh.com.sg/who-we-are/our-entities
+https://www.mohh.com.sg/who-we-are/our-purpose-and-role
+https://www.mohh.com.sg/who-we-are/our-purpose-and-role
+https://www.mohh.com.sg/who-we-are/procurement
+https://www.mohh.com.sg/what-we-do/shaping-value-based-healthcare
+https://www.mohh.com.sg/what-we-do/developing-healthcare-talent
+https://www.mohh.com.sg/what-we-do/building-healthcare-infrastructure
+https://www.mohh.com.sg/what-we-do/advancing-healthcare-innovation
+https://www.mohh.com.sg/what-we-do/advancing-healthcare-innovation
+https://www.mohh.com.sg/what-we-do/facilitating-healthcare-mediation
+https://www.mohh.com.sg/what-we-do/commitment-to-sustainability
+https://www.mohh.com.sg/careers/life-at-mohh
+https://www.mohh.com.sg/media-centre
