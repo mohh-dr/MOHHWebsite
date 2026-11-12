@@ -1542,6 +1542,79 @@ that make Singapore&#39;s healthcare happen</div>
 <script defer src="etc.clientlibs/clientlibs/granite/jquery.lc-7842899024219bcbdb5e72c946870b79-lc.min.js"></script>
 <script defer src="etc.clientlibs/clientlibs/granite/utils.lc-e7bf340a353e643d198b25d0c8ccce47-lc.min.js"></script>
 
+<script>
+    (function() {
+        var navigation = document.querySelector('[data-cmp-is="mega-navigation"]');
+        var aboutUrl = 'https://www.mohh.com.sg/who-we-are/about-us';
+
+        if (!navigation || !window.MutationObserver) {
+            return;
+        }
+
+        function appendAboutLink(menu, itemClass, linkClass) {
+            if (!menu || menu.querySelector('a[href="' + aboutUrl + '"]')) {
+                return;
+            }
+
+            var item = document.createElement('div');
+            item.className = itemClass;
+
+            var link = document.createElement('a');
+            link.className = linkClass;
+            link.href = aboutUrl;
+            link.textContent = 'About MOH Holdings | MOHH';
+            item.appendChild(link);
+            menu.appendChild(item);
+        }
+
+        function showFallback() {
+            navigation.innerHTML = '';
+
+            var bar = document.createElement('div');
+            bar.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 32px;min-height:92px;box-sizing:border-box;flex-wrap:wrap';
+
+            var logo = document.createElement('a');
+            logo.href = 'index.html';
+            logo.setAttribute('aria-label', 'MOHH Home');
+
+            var image = document.createElement('img');
+            image.src = 'content/dam/mohhwebsites/sample-images/Logo.jpg';
+            image.alt = 'MOHH Logo';
+            image.style.cssText = 'display:block;height:60px;width:auto;max-width:240px';
+            logo.appendChild(image);
+
+            var about = document.createElement('a');
+            about.href = aboutUrl;
+            about.textContent = 'About MOH Holdings | MOHH';
+            about.style.cssText = 'color:var(--theme-text-primary);font-size:16px;font-weight:700;text-decoration:none;padding:8px 12px';
+
+            bar.appendChild(logo);
+            bar.appendChild(about);
+            navigation.appendChild(bar);
+        }
+
+        var observer = new MutationObserver(function() {
+            var menu = navigation.querySelector('[data-cmp-hook-mega-navigation="menuContainer"]');
+            if (!menu) {
+                showFallback();
+                observer.disconnect();
+                return;
+            }
+
+            if (menu.querySelector('.cmp-mega-navigation__menu-item')) {
+                appendAboutLink(menu, 'cmp-mega-navigation__menu-item', 'cmp-mega-navigation__menu-link');
+                appendAboutLink(
+                    navigation.querySelector('[data-cmp-hook-mega-navigation="mobileMenu"]'),
+                    'cmp-mega-navigation__mobile-menu-item',
+                    'cmp-mega-navigation__mobile-menu-link'
+                );
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(navigation, { childList: true, subtree: true });
+    })();
+</script>
 
 
 
