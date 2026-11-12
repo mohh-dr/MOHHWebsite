@@ -53,7 +53,7 @@ if not assets:
     raise SystemExit("No hero carousel background images found in the homepage")
 PY
 wget --tries=3 --timeout=30 --user-agent "mohh-dr-sync/1.0" \
-     --no-host-directories --restrict-file-names=windows \
+     --no-host-directories --force-directories --restrict-file-names=windows \
      -i "$STAGE/hero-assets.txt" -P "$STAGE/out"
 python3 - "$STAGE/hero-assets.txt" "$STAGE/out" <<'PY'
 import os, sys
@@ -63,7 +63,7 @@ urls, output = sys.argv[1:]
 for url in open(urls, encoding="utf-8"):
     path = os.path.join(output, urlsplit(url.strip()).path.lstrip("/"))
     if not os.path.isfile(path) or os.path.getsize(path) == 0:
-        raise SystemExit("Missing hero carousel image: " + url.strip())
+        raise SystemExit("Missing hero carousel image: " + url.strip() + " -> " + path)
 PY
 
 # 2. Safety: every listed page must exist and be non-trivial, else abort
@@ -173,8 +173,9 @@ open(p, 'w', encoding='utf-8').write(s)
 PY
 done
 
-# 4. Swap into ./site, keeping repo-managed files.
+# 4. Merge the new mirror into ./site, retaining GitHub-only files.
 cp "$ROOT/site/404.html" "$STAGE/out/" 2>/dev/null || true
 touch "$STAGE/out/.nojekyll"
-rm -rf "$ROOT/site"; mv "$STAGE/out" "$ROOT/site"
+mkdir -p "$ROOT/site"
+cp -a "$STAGE/out/." "$ROOT/site/"
 echo "Mirrored $EXPECTED page(s) at $STAMP"
