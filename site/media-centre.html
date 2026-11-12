@@ -19,7 +19,7 @@
 
 <meta name="content-page-ref" content="D4Hu38dcuwCe-Eej6ODBOP82XciK_FySRxyGnQYPe7jPMiFwB-Jr-uPpd9x8ZU2t1MTx1Kor7L9Z_r_OXJWRXA"/>
 <script defer="defer" type="text/javascript" src=".rum/@adobe/helix-rum-js@^2/dist/micro.js"></script>
-<link rel="canonical" href="media-centre.html"/>
+<link rel="canonical" href="media-centre"/>
 
 
     
@@ -98,7 +98,7 @@
 <!-- GTM configured - load container -->
 
     <!-- GTM mappings data (safely escaped via data attribute) -->
-    <div id="gtm-mappings-data" style="display:none;" data-gtm-mappings="[{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.nmrc.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-N7BQX3ZX&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/mmi&#34;,&#34;gtmId&#34;:&#34;GTM-MDB6J5BM&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.1fss.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-NZH2NCKW&#34;},{&#34;domain&#34;:&#34;www.hhom.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-M7DHCPBD&#34;},{&#34;domain&#34;:&#34;localhost&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-MPJRGMDP&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WNGZNT2K&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.vanguardhealthcare.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-TR7X6NR7&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.healthcarescholarships.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-PTRBTC3Q&#34;}]"></div>
+    <div id="gtm-mappings-data" style="display:none;" data-gtm-mappings="[{&#34;domain&#34;:&#34;www.healthcarescholarships.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-PTRBTC3Q&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WNGZNT2K&#34;},{&#34;domain&#34;:&#34;www.nmrc.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-N7BQX3ZX&#34;},{&#34;domain&#34;:&#34;www.teamhealthcare.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-WGMQGRBC&#34;},{&#34;domain&#34;:&#34;www.vanguardhealthcare.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-TR7X6NR7&#34;},{&#34;domain&#34;:&#34;www.mohh.com.sg&#34;,&#34;path&#34;:&#34;/mmi&#34;,&#34;gtmId&#34;:&#34;GTM-MDB6J5BM&#34;},{&#34;domain&#34;:&#34;www.1fss.com.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-NZH2NCKW&#34;},{&#34;domain&#34;:&#34;www.hhom.sg&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-M7DHCPBD&#34;},{&#34;domain&#34;:&#34;www.caretogobeyond.sg&#34;,&#34;path&#34;:&#34;/noexcuseforabuse&#34;,&#34;gtmId&#34;:&#34;GTM-PKTKXNZQ&#34;},{&#34;domain&#34;:&#34;localhost&#34;,&#34;path&#34;:&#34;/&#34;,&#34;gtmId&#34;:&#34;GTM-MPJRGMDP&#34;}]"></div>
     <script>
     (function() {
         'use strict';
@@ -219,17 +219,14 @@
     }
     function getPageUrl(path, assetPath) {
         var parsed = new URL(path, sourceOrigin);
-        var normalizedPath = parsed.pathname.replace(/\.html$/i, '').replace(/\/$/, '') || '/';
+        var normalizedPath = parsed.pathname.replace(/(?:\.html)+$/i, '').replace(/\/$/, '') || '/';
+        if (normalizedPath === '/home' || normalizedPath === '/index') {
+            normalizedPath = '/';
+        }
         if (mirroredPages.indexOf(normalizedPath) === -1) {
             return sourceOrigin + path;
         }
-        var localPath = parsed.pathname;
-        if (localPath === '/') {
-            localPath = '/index.html';
-        } else if (!/\.html$/i.test(localPath)) {
-            localPath += '.html';
-        }
-        return assetPath + localPath + parsed.search + parsed.hash;
+        return assetPath + normalizedPath + parsed.search + parsed.hash;
     }
     window.fetch = function(input, init) {
         var requestUrl = typeof input === 'string' ? input : input && input.url;
@@ -441,7 +438,7 @@
 
         <!-- Logo -->
         <div class="cmp-mega-navigation__logo">
-            <a href="home.html" aria-label="MOHH Home">
+            <a href="./" aria-label="MOHH Home">
                 
                     <img src="content/dam/mohhwebsites/sample-images/Logo.jpg" alt="MOHH Logo"/>
                 
@@ -586,12 +583,12 @@
                         <path d="M6.74668 18.0529C4.34602 18.0529 2.3999 16.1068 2.3999 13.7062C2.3999 11.3055 4.34602 9.35938 6.74668 9.35938H6.86511C6.75704 9.80136 6.69974 10.2633 6.69974 10.7385C6.69974 10.7591 6.70003 10.7794 6.7006 10.7998C5.11648 10.8243 3.8399 12.1162 3.8399 13.7062C3.8399 15.3115 5.14132 16.6129 6.74668 16.6129H11.5133C13.1187 16.6129 14.4201 15.3115 14.4201 13.7062C14.4201 12.1008 13.1187 10.7994 11.5133 10.7994H11.0189C11.0195 10.7792 11.0197 10.7589 11.0197 10.7385C11.0197 10.124 11.3977 9.5977 11.9339 9.37946C14.1372 9.59099 15.8601 11.4474 15.8601 13.7062C15.8601 16.1068 13.914 18.0529 11.5133 18.0529H6.74668Z" fill="currentColor"/>
                     </svg>
                 </button>
-                <a href="media-centre.html#" class="cmp-mega-navigation__share-button" aria-label="Share via email" data-cmp-hook-mega-navigation="shareEmail">
+                <a href="media-centre" class="cmp-mega-navigation__share-button" aria-label="Share via email" data-cmp-hook-mega-navigation="shareEmail">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M22 6.25649V17.25C22 18.4926 20.9926 19.5 19.75 19.5H4.25C3.00736 19.5 2 18.4926 2 17.25V6.23398C2 6.22372 2.00021 6.2135 2.00061 6.20334C2.01781 5.25972 2.78812 4.5 3.73592 4.5H20.2644C21.2229 4.5 22 5.27697 22.0001 6.23549C22.0001 6.24249 22.0001 6.24949 22 6.25649ZM3.5 8.187V17.25C3.5 17.6642 3.83579 18 4.25 18H19.75C20.1642 18 20.5 17.6642 20.5 17.25V8.18747L13.2873 13.2171C12.5141 13.7563 11.4866 13.7563 10.7134 13.2171L3.5 8.187ZM20.5 6.2286V6.23398V6.24336C20.4976 6.31753 20.4604 6.38643 20.3992 6.42905L12.4293 11.9867C12.1716 12.1664 11.8291 12.1664 11.5713 11.9867L3.60116 6.42885C3.538 6.38481 3.50035 6.31268 3.50032 6.23568C3.50028 6.10553 3.60577 6 3.73592 6H20.2644C20.3922 6 20.4963 6.10171 20.5 6.2286Z" fill="currentColor"/>
                     </svg>
                 </a>
-                <a href="media-centre.html#" class="cmp-mega-navigation__share-button" aria-label="Share on LinkedIn" data-cmp-hook-mega-navigation="shareLinkedIn">
+                <a href="media-centre" class="cmp-mega-navigation__share-button" aria-label="Share on LinkedIn" data-cmp-hook-mega-navigation="shareLinkedIn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M19.7065 3H4.34844C3.62264 3 3.04199 3.58065 3.04199 4.30645V19.6935C3.04199 20.3903 3.62264 21 4.34844 21H19.6485C20.3743 21 20.9549 20.4194 20.9549 19.6935V4.27742C21.013 3.58065 20.4323 3 19.7065 3ZM8.35491 18.3H5.71297V9.73548H8.35491V18.3ZM7.01942 8.54516C6.14846 8.54516 5.4807 7.84839 5.4807 7.00645C5.4807 6.16452 6.17749 5.46774 7.01942 5.46774C7.86136 5.46774 8.55813 6.16452 8.55813 7.00645C8.55813 7.84839 7.91942 8.54516 7.01942 8.54516ZM18.371 18.3H15.7291V14.1484C15.7291 13.1613 15.7001 11.8548 14.3356 11.8548C12.942 11.8548 12.7388 12.9581 12.7388 14.0613V18.3H10.0968V9.73548H12.6807V10.9258H12.7097C13.0872 10.229 13.9291 9.53226 15.2356 9.53226C17.9356 9.53226 18.4291 11.2742 18.4291 13.6548V18.3H18.371Z" fill="currentColor"/>
                     </svg>
@@ -604,7 +601,7 @@
     <div class="cmp-mega-navigation__mobile-drawer" data-cmp-hook-mega-navigation="mobileDrawer">
         <div class="cmp-mega-navigation__mobile-header">
             <div class="cmp-mega-navigation__mobile-logo">
-                <a href="home.html" aria-label="MOHH Home">
+                <a href="./" aria-label="MOHH Home">
                     
                         <img src="content/dam/mohhwebsites/sample-images/Logo.jpg" alt="MOHH Logo"/>
                     
@@ -644,7 +641,7 @@
     <div class="cmp-mega-navigation__mobile-submenu" data-cmp-hook-mega-navigation="mobileSubmenu">
         <div class="cmp-mega-navigation__mobile-header">
             <div class="cmp-mega-navigation__mobile-logo">
-                <a href="home.html" aria-label="MOHH Home">
+                <a href="./" aria-label="MOHH Home">
                     
                         <img src="content/dam/mohhwebsites/sample-images/Logo.jpg" alt="MOHH Logo"/>
                     
@@ -829,7 +826,7 @@
                         
 
                         
-                            <a href="media-centre/bringing-healthcare-stories-to-life.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Bringing healthcare stories to life">
+                            <a href="https://www.mohh.com.sg/media-centre/bringing-healthcare-stories-to-life" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Bringing healthcare stories to life">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -863,7 +860,7 @@
                         
 
                         
-                            <a href="media-centre/mohh-annual-review-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for MOHH Annual Review 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/mohh-annual-review-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for MOHH Annual Review 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -897,7 +894,7 @@
                         
 
                         
-                            <a href="media-centre/singapore-opportunity-index-top-300-employers.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Singapore Opportunity Index Top 300 employers">
+                            <a href="https://www.mohh.com.sg/media-centre/singapore-opportunity-index-top-300-employers" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Singapore Opportunity Index Top 300 employers">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -931,7 +928,7 @@
                         
 
                         
-                            <a href="media-centre/healthcare-facility-design-standards.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Healthcare Facility Design Standards">
+                            <a href="https://www.mohh.com.sg/media-centre/healthcare-facility-design-standards" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Healthcare Facility Design Standards">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -965,7 +962,7 @@
                         
 
                         
-                            <a href="media-centre/healthcare-humanity-awards-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Healthcare Humanity Awards 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/healthcare-humanity-awards-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Healthcare Humanity Awards 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -999,7 +996,7 @@
                         
 
                         
-                            <a href="media-centre/national-medical-excellence-awards-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for National Medical Excellence Awards 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/national-medical-excellence-awards-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for National Medical Excellence Awards 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1033,7 +1030,7 @@
                         
 
                         
-                            <a href="media-centre/report-delivering-quality-care-sustainably-in-singapore.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Report: Delivering quality care sustainably in Singapore">
+                            <a href="https://www.mohh.com.sg/media-centre/report-delivering-quality-care-sustainably-in-singapore" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Report: Delivering quality care sustainably in Singapore">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1067,7 +1064,7 @@
                         
 
                         
-                            <a href="media-centre/mohh-annual-review-2024.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for MOHH Annual Review 2024">
+                            <a href="https://www.mohh.com.sg/media-centre/mohh-annual-review-2024" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for MOHH Annual Review 2024">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1101,7 +1098,7 @@
                         
 
                         
-                            <a href="media-centre/healthcare-scholarships-awards-ceremony-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Healthcare Scholarships Award Ceremony 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/healthcare-scholarships-awards-ceremony-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Healthcare Scholarships Award Ceremony 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1135,7 +1132,7 @@
                         
 
                         
-                            <a href="media-centre/nmrc-awards-ceremony-and-research-symposium-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for NMRC Awards Ceremony and Research Symposium 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/nmrc-awards-ceremony-and-research-symposium-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for NMRC Awards Ceremony and Research Symposium 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1169,7 +1166,7 @@
                         
 
                         
-                            <a href="media-centre/mohh-appreciation-dinner-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for MOHH Appreciation Dinner 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/mohh-appreciation-dinner-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for MOHH Appreciation Dinner 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1203,7 +1200,7 @@
                         
 
                         
-                            <a href="media-centre/heart-of-healthcare-2025.html" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Heart of Healthcare 2025">
+                            <a href="https://www.mohh.com.sg/media-centre/heart-of-healthcare-2025" class="cmp-media-center-list__card-button cmp-media-center-list__card-button--cta" aria-label="Read more for Heart of Healthcare 2025">
                                 <span>Read more</span>
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                     <path d="M3 8L13 8M10 5L13 8L10 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1333,15 +1330,15 @@
             <nav class="cmp-footer__navigation">
                 <div class="cmp-footer__nav-list">
                     <div class="cmp-footer__nav-item">
-                        <a href="disclaimer.html" class="cmp-footer__nav-link" target="_self" aria-label="Disclaimer">Disclaimer</a>
+                        <a href="https://www.mohh.com.sg/disclaimer" class="cmp-footer__nav-link" target="_self" aria-label="Disclaimer">Disclaimer</a>
                     
-                        <a href="terms-of-use.html" class="cmp-footer__nav-link" target="_self" aria-label="Terms of Use">Terms of Use</a>
+                        <a href="https://www.mohh.com.sg/terms-of-use" class="cmp-footer__nav-link" target="_self" aria-label="Terms of Use">Terms of Use</a>
                     
-                        <a href="whistleblowing.html" class="cmp-footer__nav-link" target="_self" aria-label="Whistleblowing">Whistleblowing</a>
+                        <a href="https://www.mohh.com.sg/whistleblowing" class="cmp-footer__nav-link" target="_self" aria-label="Whistleblowing">Whistleblowing</a>
                     
-                        <a href="contact-us.html" class="cmp-footer__nav-link" target="_self" aria-label="Contact us">Contact us</a>
+                        <a href="https://www.mohh.com.sg/contact-us" class="cmp-footer__nav-link" target="_self" aria-label="Contact us">Contact us</a>
                     
-                        <a href="content/mohhwebsites/home/sitemap" class="cmp-footer__nav-link" target="_self" aria-label="Sitemap">Sitemap</a>
+                        <a href="https://www.mohh.com.sg/content/mohhwebsites/home/sitemap" class="cmp-footer__nav-link" target="_self" aria-label="Sitemap">Sitemap</a>
                     
                         <a href="https://www.synapxe.sg/report-vulnerability" class="cmp-footer__nav-link cmp-footer__nav-link--external" target="_blank" rel="noopener noreferrer" aria-label="Report vulnerability (opens in new tab)">Report vulnerability</a>
                     </div>
@@ -1416,5 +1413,5 @@
     
 
         
-    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59725f9ae0be5f9',t:'MTc5NDUwMzQwNw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59725f9ae0be5f9',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a59740e3bab8a1cf',t:'MTc5NDUwNDUxMA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a59740e3bab8a1cf',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
